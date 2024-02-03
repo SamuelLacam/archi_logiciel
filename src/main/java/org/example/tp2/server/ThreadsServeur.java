@@ -39,11 +39,9 @@ public class ThreadsServeur extends Thread {
             String demande = "";
             do {
                 Object retour;
-                System.out.println("eeeeeeee");
+
                 Operation operation = (Operation) in.readObject();
-                System.out.println(operation + " gg");
                 demande = operation.getTypeOperation();
-                System.out.println(demande + " jj");
 
                 switch (demande) {
                     case "SOLDE":
@@ -63,8 +61,10 @@ public class ThreadsServeur extends Thread {
                         retour = null;
                 }
                 out.writeObject(retour);
+
             } while (!demande.equals("FIN_DE_CONNEXION"));
             socket.close();
+            System.out.println("Fin de connexion avec le client");
 
         } catch (IOException e) {
                 System.out.println(e.getMessage());

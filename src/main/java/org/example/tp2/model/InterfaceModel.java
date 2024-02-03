@@ -9,6 +9,7 @@ import org.example.tp2.messages.Retour;
 
 import java.io.*;
 import java.net.Socket;
+import java.net.SocketException;
 
 /**
  *
@@ -25,7 +26,10 @@ public class InterfaceModel {
     private ObjectOutputStream out;
     
     private Socket socket;
-    
+
+    public InterfaceModel() {
+
+    }
     public InterfaceModel(String ip, int port) {
         this.ip = ip;
         this.port = port;
@@ -37,63 +41,60 @@ public class InterfaceModel {
             socket = new Socket(ip, port);
             out = new ObjectOutputStream(socket.getOutputStream());
             in = new ObjectInputStream(socket.getInputStream());
-            afficherSolde();
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
     }
     
-    public Retour afficherSolde() {
-        if (this.isConnected()) {
-            Operation operation = new Operation("SOLDE");
-            envoieDonnee(operation);
-            return (Retour) retourDonnee();
+    public Retour afficherSolde() throws IOException, ClassNotFoundException {
+        if (!isSocketInitialize()) {
+            throw new SocketException("Problème de connexion au serveur");
         }
-        return null;
+        Operation operation = new Operation("SOLDE");
+        out.writeObject(operation);
+        return (Retour) in.readObject();
     }
 
-    public Retour crediter(int montant) {
-        if (this.isConnected()) {
-            Operation operation = new Operation("CREDITER", montant);
-            envoieDonnee(operation);
-            return (Retour) retourDonnee();
+    public Retour crediter(int montant) throws IOException, ClassNotFoundException {
+        if (!isSocketInitialize()) {
+            throw new SocketException("Problème de connexion au serveur");
         }
-        return null;
+        Operation operation = new Operation("CREDITER", montant);
+        out.writeObject(operation);
+        return (Retour) in.readObject();
     }
     
-    public Object debiter(int montant) {
-        if (this.isConnected()) {
-            Operation operation = new Operation("DEBITER", montant);
-            envoieDonnee(operation);
-            return retourDonnee();
+    public Object debiter(int montant) throws IOException, ClassNotFoundException {
+        if (!isSocketInitialize()) {
+            throw new SocketException("Problème de connexion au serveur");
         }
-        return null;
+        Operation operation = new Operation("DEBITER", montant);
+        out.writeObject(operation);
+        return in.readObject();
     }
-
-    private void envoieDonnee(Operation operation) {
+    
+    public void deconnexion() throws SocketException {
+        if (!isSocketInitialize()) {
+            throw new SocketException("Problème de connexion au serveur");
+        }
+        Operation operation = new Operation("FIN_DE_CONNEXION");
         try {
             out.writeObject(operation);
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            // ne rien faire car on ferme l'app
         }
     }
 
-    private Object retourDonnee() {
-        try {
-            return (Retour) in.readObject();
-        } catch (ClassNotFoundException | IOException e) {
-            System.out.println(e.getMessage());
-        }
-        return null;
-    }
-    
-    public void deconnexion()  {
-        if (this.isConnected()) {
-            Operation operation = new Operation("FIN_DE_CONNEXTION");
-        }
+    private boolean isSocketInitialize() {
+        return socket != null && !socket.isClosed()
+                && in != null && out != null;
     }
 
-    private boolean isConnected() {
-        return !socket.isClosed();
+    public void setPort(int port) {
+        this.port = port;
+    }
+
+    public void setIp(String ip) {
+        this.ip = ip;
     }
 }

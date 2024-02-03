@@ -29,30 +29,36 @@ public class Operation implements Serializable {
     }
 
     public Operation(String typeOperation) {
+        boolean resultat = false;
         for (String typeOp : TYPE_OPERATIONS_1) {
-            if (!typeOp.equals(typeOperation.toUpperCase())) {
-                throw new IllegalArgumentException("Vous n'avez pas donné une opération valide");
+            if (typeOp.equals(typeOperation.toUpperCase())) {
+                resultat = true;
             }
+        }
+        if (!resultat) {
+            throw new IllegalArgumentException("Vous n'avez pas donné une opération valide");
         }
 
         this.typeOperation = typeOperation;
-
     }
 
     public Operation(String typeOperation, int montant) {
-        for (String typeOp : TYPE_OPERATIONS_2) {
-            if (!typeOp.equals(typeOperation.toUpperCase())) {
-                throw new IllegalArgumentException("Vous n'avez pas donné une opération valide");
-            }
-        }
-
         if (montant <= 0) {
             throw  new IllegalArgumentException("montant donné invalide");
         }
 
+        boolean resultat = false;
+        for (String typeOp : TYPE_OPERATIONS_2) {
+            if (typeOp.equals(typeOperation.toUpperCase())) {
+                resultat = true;
+            }
+        }
+        if (!resultat) {
+            throw new IllegalArgumentException("Vous n'avez pas donné une opération valide");
+        }
+
         this.typeOperation = typeOperation;
         this.montant = montant;
-
     }
 
 }

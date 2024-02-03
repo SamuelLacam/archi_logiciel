@@ -4,30 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b1721479-c1ed-45b5-b403-32e59cad4bec" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/tp2/App.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/tp2/controller/InterfaceController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/tp2/donnees/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/tp2/messages/Erreur.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/tp2/messages/Operation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/tp2/messages/Retour.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/tp2/model/InterfaceModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/tp2/server/OperationBancaire.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/tp2/server/Serveur.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/tp2/server/ThreadsServeur.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/tp2/interface.fxml" afterDir="false" />
+    <list default="true" id="b1721479-c1ed-45b5-b403-32e59cad4bec" name="Changes" comment="presque fini, debiter non terminé, bug ThreadsServeur sur in.readObject()">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/tp2/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/tp2/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/tp2/controller/InterfaceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/tp2/controller/InterfaceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/tp2/messages/Erreur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/tp2/messages/Erreur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/tp2/messages/Operation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/tp2/messages/Operation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/tp2/model/InterfaceModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/tp2/model/InterfaceModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/tp2/server/ThreadsServeur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/tp2/server/ThreadsServeur.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,11 +115,35 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706799664296</updated>
-      <workItem from="1706799665304" duration="15104000" />
+      <workItem from="1706799665304" duration="30309000" />
     </task>
+    <task id="LOCAL-00001" summary="presque fini, debiter non terminé, bug ThreadsServeur sur in.readObject()">
+      <option name="closed" value="true" />
+      <created>1706826058759</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1706826058759</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="presque fini, debiter non terminé, bug ThreadsServeur sur in.readObject()" />
+    <option name="LAST_COMMIT_MESSAGE" value="presque fini, debiter non terminé, bug ThreadsServeur sur in.readObject()" />
   </component>
 </project>

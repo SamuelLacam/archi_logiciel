@@ -17,4 +17,8 @@ public class Erreur implements Serializable {
     public Erreur(String messageErreur) {
         this.messageErreur = messageErreur;
     }
+
+    public String getMessageErreur() {
+        return messageErreur;
+    }
 }
