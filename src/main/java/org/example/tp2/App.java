@@ -1,10 +1,14 @@
 package org.example.tp2;
 
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
+import org.example.tp2.controller.InterfaceController;
 
 import java.io.IOException;
 
@@ -18,8 +22,20 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("interface"));
+        processusFermetureApp(stage);
         stage.setScene(scene);
         stage.show();
+    }
+
+    private static void processusFermetureApp(Stage stageCourant) {
+        stageCourant.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+                InterfaceController.deconnexion();
+                event.consume();
+                Platform.exit();
+            }
+        });
     }
 
     static void setRoot(String fxml) throws IOException {

@@ -25,11 +25,8 @@ public class InterfaceModel {
     private ObjectOutputStream out;
     
     private Socket socket;
-    
-    public InterfaceModel(String ip, int port) {
-        this.ip = ip;
-        this.port = port;
-    }
+
+    public InterfaceModel() {}
     
     public void connexion() {
         System.out.println(ip + " " + port);
@@ -37,7 +34,6 @@ public class InterfaceModel {
             socket = new Socket(ip, port);
             out = new ObjectOutputStream(socket.getOutputStream());
             in = new ObjectInputStream(socket.getInputStream());
-            afficherSolde();
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
@@ -80,7 +76,7 @@ public class InterfaceModel {
 
     private Object retourDonnee() {
         try {
-            return (Retour) in.readObject();
+            return (Object) in.readObject();
         } catch (ClassNotFoundException | IOException e) {
             System.out.println(e.getMessage());
         }
@@ -89,11 +85,20 @@ public class InterfaceModel {
     
     public void deconnexion()  {
         if (this.isConnected()) {
-            Operation operation = new Operation("FIN_DE_CONNEXTION");
+            Operation operation = new Operation("FIN_DE_CONNEXION");
+            envoieDonnee(operation);
         }
     }
 
     private boolean isConnected() {
-        return !socket.isClosed();
+        return socket != null && !socket.isClosed();
+    }
+
+    public void setPort(int port) {
+        this.port = port;
+    }
+
+    public void setIp(String ip) {
+        this.ip = ip;
     }
 }

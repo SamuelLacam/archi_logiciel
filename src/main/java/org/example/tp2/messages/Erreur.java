@@ -10,11 +10,15 @@ import java.io.Serializable;
  *
  * @author samuel.lacam
  */
-public class Erreur implements Serializable {
+public class Erreur extends Message {
 
     private String messageErreur;
 
     public Erreur(String messageErreur) {
         this.messageErreur = messageErreur;
+    }
+
+    public String getMessageErreur() {
+        return messageErreur;
     }
 }

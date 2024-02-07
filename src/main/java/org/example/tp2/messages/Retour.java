@@ -10,7 +10,7 @@ import java.io.Serializable;
  *
  * @author samuel.lacam
  */
-public class Retour implements Serializable {
+public class Retour extends Message {
 
     private int nouveauSolde;
 
